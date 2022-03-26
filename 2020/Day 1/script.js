@@ -13,7 +13,7 @@ for (let i = 0; i < input.length; i++) {
 
         if (numberToTry + input[j] == 2020) {
 
-            result = numberToTry * input[j];
+            result = numberToTry * input[j]; 
 
         }
 
@@ -22,3 +22,4 @@ for (let i = 0; i < input.length; i++) {
 }
 
 console.log(result);
+
