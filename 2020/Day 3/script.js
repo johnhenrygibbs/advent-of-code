@@ -41,6 +41,8 @@ console.log(totalTwo);
 
 // Solution for Part Two (checking the other four slopes)
 
+// Checks slope that is right 1, down 1 
+
 for (let i = 1; i < input.length; i++) {
 
     positionOne += 1;
@@ -62,6 +64,8 @@ for (let i = 1; i < input.length; i++) {
 }
 
 console.log(totalOne);
+
+// Checks slope that is right 5, down 1 
 
 for (let i = 1; i < input.length; i++) {
 
@@ -85,6 +89,8 @@ for (let i = 1; i < input.length; i++) {
 
 console.log(totalThree);
 
+// Checks slope that is right 7, down 1 
+
 for (let i = 1; i < input.length; i++) {
 
     positionFour += 7;
@@ -106,6 +112,8 @@ for (let i = 1; i < input.length; i++) {
 }
 
 console.log(totalFour);
+
+// Checks slope that is right 1, down 2 
 
 for (let i = 2; i < input.length; i += 2) {
 
