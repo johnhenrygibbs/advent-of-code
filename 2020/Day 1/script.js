@@ -3,7 +3,7 @@ var input = fs.readFileSync('2020/Day 1/input.txt').toString().split("\n").map(N
 
 // Solution for Part One
 
-let result = 0
+let result = 0;
 
 for (let i = 0; i < input.length; i++) {
 
