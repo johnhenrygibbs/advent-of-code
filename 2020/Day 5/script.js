@@ -6,6 +6,7 @@ var input = fs.readFileSync("2020/Day 5/input.txt").toString().split("\n");
 let boardingPass = "";
 
 let uniqueSeatId; 
+let mySeatId; 
 let highestSeatId = 0; 
 
 let rows = [];
@@ -14,6 +15,8 @@ let rowNumber;
 let columnNumber; 
 let rowHalf;
 let columnHalf; 
+
+let seats = [];
 
 // Two loops create a zero-based array for rows and columns on the plane. 
 
@@ -89,6 +92,10 @@ for (let j = 0; j < input.length; j++) {
 
     }
 
+    // Pushes each unique seat ID into an array for part two. 
+
+    seats.push(uniqueSeatId);
+
     // Resetting the rows and columns in order to loop through the next boarding pass. 
 
     rows = [];
@@ -109,3 +116,21 @@ for (let j = 0; j < input.length; j++) {
 }
 
 console.log(highestSeatId); 
+
+// Solution for Part Two
+
+seats.sort();
+
+// Iterates through an array of seats and checks for missing seat. 
+
+for (let i = 1; i < seats.length; i++) {
+
+    if (seats[i] - seats[i - 1] == 2) {
+
+        mySeatId = seats[i] - 1; 
+
+    }
+
+}
+
+console.log(mySeatId);
