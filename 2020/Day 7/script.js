@@ -63,3 +63,53 @@ function getValidBags(input) {
 }
 
 console.log(getValidBags(input));
+
+// Solution for Part Two 
+
+let foundBags = [];
+let validBags = []; 
+
+function getShinyGoldBagsContents(input) {
+
+    let rule = "";
+
+    for (let i = 0; i < input.length; i++) {
+
+        rule = input[i].split(" bags contain ");
+        foundBags = rule[1].split(", ");
+
+        if (rule[0].includes("shiny gold")) {
+
+            for (let j = 0; j < foundBags.length; j++) {
+
+                validBags.unshift(foundBags[j]);
+
+            }
+
+            return validBags; 
+
+        }
+
+    }
+
+}
+
+function getBags(input) {
+
+    let bags = getShinyGoldBagsContents(input);
+
+    let total = 0; 
+
+    for (let i = 0; i < bags.length; i++) {
+
+        total += Number(bags[i][0]);
+
+    }
+
+    console.log(total);
+
+    return bags; 
+
+}
+
+console.log(getBags(input));
