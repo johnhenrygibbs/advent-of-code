@@ -1,3 +1,4 @@
+const { count } = require('console');
 var fs = require('fs');
 var input = fs.readFileSync("2020/Day 7/input.txt").toString().split("\n");
 
@@ -66,27 +67,46 @@ console.log(getValidBags(input));
 
 // Solution for Part Two 
 
-let foundBags = [];
-let validBags = []; 
-
-function getShinyGoldBagsContents(input) {
+function getBags(color) {
 
     let rule = "";
+    let object = {};
 
     for (let i = 0; i < input.length; i++) {
 
         rule = input[i].split(" bags contain ");
-        foundBags = rule[1].split(", ");
 
-        if (rule[0].includes("shiny gold")) {
+        if (rule[0].includes(color)) {
 
-            for (let j = 0; j < foundBags.length; j++) {
+            let contents = rule[1].split(", ");
 
-                validBags.unshift(foundBags[j]);
+            for (let j = 0; j < contents.length; j++) {
+
+                let item = contents[j].split(" ").splice(1, 2).join(" ");
+                
+                object[item] = Number(contents[j][0]);
 
             }
 
-            return validBags; 
+            let count = 0; 
+
+            if (Object.keys(object) == "other bags.") {
+    
+                return 0; 
+
+            } else {
+
+                for (bag in object) {
+
+                    count += object[bag];
+
+                    count += object[bag] * getBags(bag);
+
+                }
+
+                return count; 
+
+            }
 
         }
 
@@ -94,22 +114,4 @@ function getShinyGoldBagsContents(input) {
 
 }
 
-function getBags(input) {
-
-    let bags = getShinyGoldBagsContents(input);
-
-    let total = 0; 
-
-    for (let i = 0; i < bags.length; i++) {
-
-        total += Number(bags[i][0]);
-
-    }
-
-    console.log(total);
-
-    return bags; 
-
-}
-
-console.log(getBags(input));
+console.log(getBags("shiny gold"));
