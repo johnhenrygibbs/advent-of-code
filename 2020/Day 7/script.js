@@ -1,4 +1,3 @@
-const { count } = require('console');
 var fs = require('fs');
 var input = fs.readFileSync("2020/Day 7/input.txt").toString().split("\n");
 
@@ -72,6 +71,8 @@ function getBags(color) {
     let rule = "";
     let object = {};
 
+    // First for loop splits up each individual input line into two pieces and creates a contents array.
+
     for (let i = 0; i < input.length; i++) {
 
         rule = input[i].split(" bags contain ");
@@ -79,6 +80,8 @@ function getBags(color) {
         if (rule[0].includes(color)) {
 
             let contents = rule[1].split(", ");
+
+            // Second loop iterates over the contents array and creates an object dictionary, with colors as keys and numbers as values.
 
             for (let j = 0; j < contents.length; j++) {
 
@@ -88,6 +91,8 @@ function getBags(color) {
 
             }
 
+            // Recursive conditions and count begins for each level of bag found.
+
             let count = 0; 
 
             if (Object.keys(object) == "other bags.") {
@@ -95,6 +100,8 @@ function getBags(color) {
                 return 0; 
 
             } else {
+
+                // Third for loop adds the amount inside the current bag to the count (108) and then uses that number as the coefficient multiplied by the number of bags inside that bag (110) found by calling the getBags() function.
 
                 for (bag in object) {
 
