@@ -51,3 +51,54 @@ function findFirstNumber() {
 }
 
 console.log(findFirstNumber());
+
+// Solution for Part Two
+
+let invalidNumber = findFirstNumber();
+
+function findWeakness() {
+
+    // Nested loop that collects numbers until the result of those numbers added together exceeds the value found in part one.
+
+    for (let i = 0; i < input.length; i++) {
+
+        let contiguousSet = [];
+        let count = 0;
+    
+        contiguousSet.unshift(Number(input[i]));
+    
+        for (let j = i + 1; j < input.length; j++) {
+    
+            contiguousSet.unshift(Number(input[j]));
+
+            // Uses reduce function to add all the current values within the contiguousSet array together.
+    
+            count = contiguousSet.reduce((partialSum, a) => partialSum + a, 0);
+
+            if (count > invalidNumber) {
+
+                break;
+
+            } else if (count == invalidNumber) {
+
+                // Since sort operates alphabetically, the following line uses a helper function to sort the array numerically before returning the result of the smallest and largest numbers in the set added together.
+
+                contiguousSet.sort(sortNumerically);
+
+                return contiguousSet[0] + contiguousSet[contiguousSet.length - 1];
+
+            }
+            
+        }
+
+    }
+
+}
+
+function sortNumerically(a, b) {
+
+    return a - b;
+
+}
+
+console.log(findWeakness());
