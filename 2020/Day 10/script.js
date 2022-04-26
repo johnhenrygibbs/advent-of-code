@@ -73,3 +73,71 @@ while (currentAdapter < (findMyDeviceAdapter() - 3)) {
 }
 
 console.log(oneJolt * (threeJolt + 1));
+
+// Solution for Part Two
+
+function sortNumerically(a, b) {
+
+    return a - b;
+
+}
+
+let sorted = input.sort(sortNumerically);
+
+// Pushes in the values for the charging outlet and my device's built-in adapter.
+
+sorted.unshift('0');
+sorted.push('180');
+
+let groups = [];
+let group = [];
+
+// Loops through the sorted array and groups smaller arrays at breakpoints where the difference is three. Since three is the maximum "jump" any adapter can make, these values can't be altered.
+
+for (let i = 0; i < sorted.length; i++) {
+
+    if (Number(sorted[i + 1]) - Number(sorted[i]) == 1) {
+
+        group.push(Number(sorted[i]));
+
+    } else if (Number(sorted[i + 1]) - Number(sorted[i]) == 3) {
+
+        group.push(Number(sorted[i]));
+
+        groups.push(group);
+        
+        group = [];
+
+    }
+
+}
+
+let totalArrangements = 1;
+
+// Function that calculates the total number of arrangements via factoring. Since no group's length is greater than five there are only three possible permutations within the input data: 2, 4, and 7. Each time a permutation is found it's multiplied by the sum. The total number of arrangements is then returned at the end of the loop.
+
+function calculateArrangements() {
+
+    for (let i = 0; i < groups.length; i++) {
+
+        if (groups[i].length == 3) {
+
+            totalArrangements *= 2;
+
+        } else if (groups[i].length == 4) {
+
+            totalArrangements *= 4;
+
+        } else if (groups[i].length == 5) {
+
+            totalArrangements *= 7;
+
+        }
+
+    }
+
+    return totalArrangements;
+
+}
+
+console.log(calculateArrangements());
