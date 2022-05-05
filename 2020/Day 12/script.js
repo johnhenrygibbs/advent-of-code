@@ -1,3 +1,4 @@
+const { timeStamp } = require('console');
 var fs = require('fs');
 var input = fs.readFileSync("2020/Day 12/input.txt").toString().split("\n");
 
@@ -100,3 +101,78 @@ function findManhattanDistance() {
 }
 
 console.log(findManhattanDistance());
+
+// Solution for Part Two
+
+function findWaypoint() {
+
+    let shipEastWest = 0;
+    let shipNorthSouth = 0;
+
+    // Starting waypoint coordinates.
+    
+    let waypointEastWest = 10;
+    let waypointNorthSouth = 1;
+
+    for (let i = 0; i < input.length; i++) {
+
+        let action = input[i].substring(0, 1);
+        let value = input[i].substring(1);
+
+        // Four conditionals check for direction actions and update the waypoint coordinates accordingly.
+
+        if (action == 'N') {
+    
+            waypointNorthSouth += Number(value);
+    
+        } else if (action == 'S') {
+    
+            waypointNorthSouth -= Number(value);
+    
+        } else if (action == 'E') {
+    
+            waypointEastWest += Number(value);
+    
+        } else if (action == 'W') {
+    
+            waypointEastWest -= Number(value);
+    
+        }
+
+        // Three possible rotations that update the waypoint coordinates. The temp variable stores the first coordinate, since it is reassigned immediately within each conditional.
+
+        let temp = waypointEastWest;
+
+        if (input[i] == "R90" || input[i] == "L270") {
+
+            waypointEastWest = waypointNorthSouth;
+            waypointNorthSouth = -temp;
+
+        } else if (input[i] == "R180" || input[i] == "L180") {
+
+            waypointEastWest = -waypointEastWest;
+            waypointNorthSouth = -waypointNorthSouth;
+
+        } else if (input[i] == "R270" || input[i] == "L90") {
+
+            waypointEastWest = -waypointNorthSouth;
+            waypointNorthSouth = temp;
+
+        }
+
+        // Lastly, a simple calculation updates the ship's position as it relates to the waypoint's coordinates.
+
+        if (action == "F") {
+
+            shipEastWest += Number(value) * waypointEastWest;
+            shipNorthSouth += Number(value) * waypointNorthSouth;
+
+        }
+
+    }
+
+    return Math.abs(shipEastWest) + Math.abs(shipNorthSouth);
+
+}
+
+console.log(findWaypoint());
