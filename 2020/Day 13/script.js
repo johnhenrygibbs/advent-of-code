@@ -60,8 +60,6 @@ function findEarliestBus() {
 
     let closestBusTimes = calculateDepartureTimes();
 
-    console.log(closestBusTimes);
-
     let differencesArray = [];
 
     for (let i = 0; i < closestBusTimes.length; i++) {
@@ -89,3 +87,6 @@ function findEarliestBus() {
 }
 
 console.log(findEarliestBus());
+
+// Solution for Part Two
+
