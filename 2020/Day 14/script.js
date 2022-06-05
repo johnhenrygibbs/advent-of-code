@@ -91,3 +91,41 @@ function sumValues(memory) {
 }
 
 console.log(sumValues(memory));
+
+// Solution for Part Two
+
+function decoder(address) {
+
+    let test = "000000000000000000000000000000X1001X";
+
+    let maskedAddress = "";
+    let binary = convertToBinaryString(address);
+    let addresses = [];
+
+    for (let i = 0; i < 36; i++) {
+
+        if (test[i] == 1 || test[i] == 'X') {
+
+            maskedAddress += test[i];
+
+        } else {
+
+            maskedAddress += binary[i];
+
+        }
+
+    }
+
+    addresses.push(maskedAddress);
+
+    for (let k = 0; k < maskedAddress.length; k++) {
+
+
+
+    }
+
+    return maskedAddress;
+
+}
+
+console.log(decoder(42));
