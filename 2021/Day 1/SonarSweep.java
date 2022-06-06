@@ -16,6 +16,8 @@ public class SonarSweep {
 
         }
 
+        // Solution for Part One
+
         int counter = 0;
 
         for (int i = 1; i < contents.size(); i++) {
@@ -32,6 +34,25 @@ public class SonarSweep {
         }
 
         System.out.println(counter);
+
+        // Solution for Part Two
+
+        int totalSums = 0;
+
+        for (int i = 0; i < contents.size() - 3; i++) {
+
+            int sumOne = Integer.parseInt(contents.get(i)) + Integer.parseInt(contents.get(i + 1)) + Integer.parseInt(contents.get(i + 2));
+            int sumTwo = Integer.parseInt(contents.get(i + 1)) + Integer.parseInt(contents.get(i + 2)) + Integer.parseInt(contents.get(i + 3));
+
+            if (sumTwo > sumOne) {
+
+                totalSums++;
+
+            }
+
+        }
+
+        System.out.println(totalSums);
 
         scan.close();
 
