@@ -44,6 +44,36 @@ public class Dive {
 
         System.out.println(Math.abs(horizontal * depth));
 
+        // Solution for Part Two
+
+        int aim = 0;
+        int horizontalTwo = 0;
+        int depthTwo = 0;
+
+        for (int i = 0; i < contents.size(); i++) {
+
+            String inputTwo = contents.get(i);
+            String[] commandsTwo = inputTwo.split(" ");
+
+            if (commandsTwo[0].equals("down")) {
+
+                aim += Integer.parseInt(commandsTwo[1]);
+
+            } else if (commandsTwo[0].equals("up")) {
+
+                aim -= Integer.parseInt(commandsTwo[1]);
+
+            } else if (commandsTwo[0].equals("forward")) {
+
+                horizontalTwo += Integer.parseInt(commandsTwo[1]);
+                depthTwo += aim * Integer.parseInt(commandsTwo[1]);
+
+            }
+
+        }
+
+        System.out.println(Math.abs(horizontalTwo * depthTwo));
+
         scan.close();
 
     }
