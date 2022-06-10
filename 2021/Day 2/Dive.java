@@ -8,7 +8,7 @@ public class Dive {
 
         File file = new File("/Users/johngibbs/Desktop/John/Repositories/advent-of-code/2021/Day 2/input.txt");
         Scanner scan = new Scanner(file);
-        ArrayList<String> contents = new ArrayList<>();
+        ArrayList<String> contents = new ArrayList<String>();
 
         while (scan.hasNextLine()) {
 
