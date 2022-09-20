@@ -66,6 +66,7 @@ public class Dive {
             } else if (commandsTwo[0].equals("forward")) {
 
                 horizontalTwo += Integer.parseInt(commandsTwo[1]);
+                
                 depthTwo += aim * Integer.parseInt(commandsTwo[1]);
 
             }
