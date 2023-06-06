@@ -1,9 +1,8 @@
 var fs = require('fs');
 var input = fs.readFileSync('2022/Day 2/input.txt').toString().split("\n");
 
-// Solution for Part One
-
-let totalScore = 0;
+let totalScoreOne = 0;
+let totalScoreTwo = 0;
 
 for (let i = 0; i < input.length; i++) {
 
@@ -19,15 +18,18 @@ for (let i = 0; i < input.length; i++) {
 
         if (myChoice === 'X') {
 
-            totalScore += 4;
+            totalScoreOne += 4;
+            totalScoreTwo += 3;
 
         } else if (myChoice === 'Y') {
 
-            totalScore += 8;
+            totalScoreOne += 8;
+            totalScoreTwo += 4;
 
         } else if (myChoice === 'Z') {
 
-            totalScore += 3;
+            totalScoreOne += 3;
+            totalScoreTwo += 8;
 
         }
 
@@ -39,15 +41,18 @@ for (let i = 0; i < input.length; i++) {
 
         if (myChoice === 'X') {
 
-            totalScore += 1;
+            totalScoreOne += 1;
+            totalScoreTwo += 1;
 
         } else if (myChoice === 'Y') {
 
-            totalScore += 5;
+            totalScoreOne += 5;
+            totalScoreTwo += 5;
 
         } else if (myChoice === 'Z') {
 
-            totalScore += 9;
+            totalScoreOne += 9;
+            totalScoreTwo += 9;
 
         }
 
@@ -59,15 +64,18 @@ for (let i = 0; i < input.length; i++) {
 
         if (myChoice === 'X') {
 
-            totalScore += 7;
+            totalScoreOne += 7;
+            totalScoreTwo += 2;
 
         } else if (myChoice === 'Y') {
 
-            totalScore += 2;
+            totalScoreOne += 2;
+            totalScoreTwo += 6;
 
         } else if (myChoice === 'Z') {
 
-            totalScore += 6;
+            totalScoreOne += 6;
+            totalScoreTwo += 7;
 
         }
 
@@ -75,4 +83,5 @@ for (let i = 0; i < input.length; i++) {
 
 }
 
-console.log(totalScore);
+console.log(totalScoreOne);
+console.log(totalScoreTwo);
