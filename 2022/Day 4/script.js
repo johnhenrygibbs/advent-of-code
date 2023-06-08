@@ -11,7 +11,7 @@ for (let i = 0; i < input.length; i++) {
     let firstElf = pairs[0].split("-");
     let secondElf = pairs[1].split("-");
 
-    // Once we split each pair into an array, convert the strings to numbers.
+    // Once each pair has been split into an array, convert the strings to numbers.
 
     for (let i = 0; i < firstElf.length; i++) {
 
