@@ -3,9 +3,11 @@ var input = fs.readFileSync('2022/Day 6/input.txt').toString();
 
 // Solution for Part One
 
+// Updated "start" and "count" variables to 14 to solve for part two.
+
 // The variable "start" keeps track of the number of characters processed.
 
-let start = 4;
+let start = 14;
 
 function buffer(input) {
 
@@ -16,7 +18,7 @@ function buffer(input) {
         let count = 0;
         let marker = "";
 
-        while (count < 4) {
+        while (count < 14) {
 
             marker += input[i + count];
             count++;
