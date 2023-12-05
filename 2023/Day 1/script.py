@@ -27,8 +27,6 @@ def trebuchet(input):
 
         sum += calibrationValue
 
-        # print(numbers)
-
     return sum
 
 print(trebuchet(input))
@@ -49,12 +47,13 @@ def swap(input):
             while num in line:
 
                 # The trueNumber is adjusted for zero-based indexing.
-                # The index is adjusted to the second character to account for overlapping numbers (e.g. "oneeight")
+                # The index is adjusted to the second character to account for overlapping numbers (e.g. "oneeight").
+                # We don't want to swap an entire word to the number because that could wipe out a neighboring number.
 
                 trueNumber = digits.index(num) + 1
                 index = line.index(num) + 1
 
-                # Using replace() won't work, so we have to use list() and join() methods to specify the desired index.
+                # Using replace() won't work with this logic, so we have to use list() and join() methods to specify the desired index.
 
                 lineAsList = list(line)
                 lineAsList[index] = str(trueNumber)
