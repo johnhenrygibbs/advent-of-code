@@ -45,7 +45,7 @@ def boatRace(input):
 
             milliseconds += 1
 
-        # Update totalWays array with the size of the recordsBroken array after each iteration.
+        # Update the totalWays array with the size of the recordsBroken array after each iteration.
 
         totalWays.append((len(recordsBroken)))
 
