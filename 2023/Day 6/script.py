@@ -34,7 +34,6 @@ def boatRace(input):
             # Millimeters per second (mpm) is equal to the milliseconds spent holding the button.
 
             mpm = milliseconds
-
             totalDistance = (elapsed - milliseconds) * mpm
 
             # Check to see if the totalDistance exceeds the record value for that race and update the recordsBroken array if so.
@@ -60,3 +59,43 @@ def boatRace(input):
     return result
 
 print(boatRace(input))
+
+# Solution for Part Two
+
+def oneLongRace(input):
+
+    totalWays = 0
+    array = []
+
+    for line in input:
+
+        numbers = line.split()
+        numbers = numbers[1:]
+        oneNumber = "".join(numbers)
+        array.append(oneNumber)
+        print(array)
+
+    elapsed = int(array[0])
+    record = int(array[1])
+
+    print(elapsed, record)
+
+    milliseconds = 0
+
+    while milliseconds <= elapsed:
+
+        print(milliseconds)
+
+        mpm = milliseconds
+        totalDistance = (elapsed - milliseconds) * mpm
+
+        if totalDistance > record:
+
+            totalWays += 1
+            print(totalWays)
+
+        milliseconds += 1
+
+    return totalWays
+
+print(oneLongRace(input))
