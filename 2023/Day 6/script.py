@@ -84,8 +84,6 @@ def oneLongRace(input):
 
     while milliseconds <= elapsed:
 
-        print(milliseconds)
-
         mpm = milliseconds
         totalDistance = (elapsed - milliseconds) * mpm
 
@@ -98,4 +96,4 @@ def oneLongRace(input):
 
     return totalWays
 
-print(oneLongRace(input))
+# print(oneLongRace(input))
