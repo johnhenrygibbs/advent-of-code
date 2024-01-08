@@ -1,24 +1,21 @@
 with open('/Users/johngibbs/Desktop/John/Repositories/advent-of-code/2023/Day 5/input.txt') as file:
     input = file.read().splitlines()
 
-    # for line in input:
+# Solution for Part One
 
-    #     if line == "":
-
-    #         input.remove(line)
+# Formatting an array of seeds as list.
 
 seeds = input.pop(0)
 seeds = seeds.split()
 seeds.remove(seeds[0])
 seeds = list(map(int, seeds))
 
-input.remove(input[0])
-
-print(input[0])
+# Function to make an array of maps out of the input data.
 
 def makeMaps(input):
 
     maps = []
+    legend = []
 
     for line in input:
 
@@ -26,9 +23,7 @@ def makeMaps(input):
 
             legend = []
 
-        elif line == '\n':
-
-            print("HELLO")
+        elif line == '' and len(legend) > 1:
 
             maps.append(legend)
 
@@ -36,24 +31,39 @@ def makeMaps(input):
 
             legend.append(line)
 
+    maps.append(legend)
     return maps
 
 maps = makeMaps(input)
 
-for line in maps:
+# The almanac function converts seed numbers via each category (map) to location numbers.
 
-    print(line)
+def almanac(seeds, maps):
 
-# print(maps)
+    locationNumbers = []
 
-# def almanac(seeds, maps):
+    for seed in seeds:
 
-    # for seed in seeds:
+        for map in maps:
 
-    #     print(seed)
+            for range in map:
 
-    #     for map in maps:
+                values = range.split()
+                destination = int(values[0])
+                source = int(values[1])
+                length = int(values[2])
 
-    #         for range in map:
+                # Perform the appropriate shift if the seed number falls within the given range.
 
-# print(almanac(seeds, maps))
+                if seed >= source and seed < (source + length):
+
+                    seed = seed + (destination - source)
+                    break
+
+        locationNumbers.append(seed)
+
+    return locationNumbers
+
+result = almanac(seeds, maps)
+result.sort()
+print(result[0])
