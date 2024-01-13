@@ -1,48 +1,31 @@
 with open('/Users/johngibbs/Desktop/John/Repositories/advent-of-code/2023/Day 9/input.txt') as file:
     input = file.read().splitlines()
 
-# sequence = input[0].split()
-# sequence = list(map(int, sequence))
-ends = []
+# Solution for Part One
 
-def getZeroes(sequence):
+def extrapolate(sequence):
 
-    diff = [sequence[i + 1] - sequence[i] for i in range(len(sequence) - 1)]
-    ends.append(diff[len(diff) - 1])
+    # Store the last value of the sequence as nextValue before moving on to the differences.
 
-    if sum(diff) != 0:
+    nextValue = sequence[len(sequence) - 1]
 
-        return getZeroes(diff)
+    # While the sequence does not contain all zeroes, continue generating sequences of difference and increment nextValue with the last entry.
 
-    else:
+    while any(sequence) != 0:
 
-        return ends
-
-# ends = getZeroes(sequence)
-
-# print(ends)
-
-def extrapolate(ends):
-
-    for i in range(len(ends) - 1, 1, -1):
-
-        nextValue = ends[i] + ends[i - 1]
+        sequence = [sequence[i + 1] - sequence[i] for i in range(len(sequence) - 1)]
+        nextValue += sequence[len(sequence) - 1]
 
     return nextValue
 
-# print(extrapolate(ends))
-
 answer = 0
+
+# Iterate through the input and call the extrapolate() function on each line to generate the sum.
 
 for line in input:
 
     sequence = line.split()
     sequence = list(map(int, sequence))
-    print(sequence)
-    ends = getZeroes(sequence)
-    print(ends)
-    result = extrapolate(ends)
-    answer += result
-    ends = []
+    answer += extrapolate(sequence)
 
-print(sum)
+print(answer)
