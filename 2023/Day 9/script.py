@@ -18,7 +18,8 @@ def extrapolate(sequence):
 
     return nextValue
 
-answer = 0
+answerOne = 0
+answerTwo = 0
 
 # Iterate through the input and call the extrapolate() function on each line to generate the sum.
 
@@ -26,6 +27,16 @@ for line in input:
 
     sequence = line.split()
     sequence = list(map(int, sequence))
-    answer += extrapolate(sequence)
+    answerOne += extrapolate(sequence)
 
-print(answer)
+    # Solution for Part Two
+
+    # Reverse the line and perform the extrapolate() function on each sequence.
+
+    reversed = line.split()
+    reversed.reverse()
+    reversed = list(map(int, reversed))
+    answerTwo += extrapolate(reversed)
+
+print(answerOne)
+print(answerTwo)
