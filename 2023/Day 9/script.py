@@ -9,7 +9,7 @@ def extrapolate(sequence):
 
     nextValue = sequence[len(sequence) - 1]
 
-    # While the sequence does not contain all zeroes, continue generating sequences of difference and increment nextValue with the last entry.
+    # While the sequence does not contain all zeroes, continue generating differences and increment nextValue.
 
     while any(sequence) != 0:
 
