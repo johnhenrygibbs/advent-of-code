@@ -3,17 +3,6 @@ with open('/Users/johngibbs/Desktop/John/Repositories/advent-of-code/2023/Day 10
 
 # Solution for Part One
 
-# pipeFittings = {
-
-#     "|": ["north", "south"],
-#     "-": ["east", "west"],
-#     "L": ["north", "east"],
-#     "J": [ "north", "west"],
-#     "7": ["south", "west"],
-#     "F": ["south", "east"]
-
-# }
-
 backward = {
 
     "east": ["-", "L", "F"],
@@ -32,6 +21,20 @@ forward = {
 
 }
 
+object = {
+
+    ("7", "north"): ("west", 0, -1),
+    ("7", "east"): ("south", 1, 0),
+
+}
+
+direction = {
+
+    "west": (0, -1),
+    "east": (0, 1),
+
+}
+
 def findStart(input):
 
     for line in input:
@@ -45,15 +48,10 @@ def findStart(input):
 
 tuple = findStart(input)
 
-x = tuple[0]
-y = tuple[1]
-steps = 0
-type = input[x][y]
-print(type)
+def findFirstNeighbor(row, column):
 
-def findDirection(row, column):
-
-    global steps
+    neighbor = []
+    steps = 0
 
     east = input[row][column + 1]
     south = input[row + 1][column]
@@ -62,32 +60,36 @@ def findDirection(row, column):
 
     if east in backward["west"]:
 
-        steps += 1
-        column += 1
+        neighbor = [row, column + 1]
 
     elif south in backward["north"]:
 
-        steps += 1
-        row += 1
+        neighbor = [row + 1, column]
 
     elif west in backward["east"]:
 
-        steps += 1
-        column -= 1
+        neighbor = [row, column - 1]
 
     elif north in backward["south"]:
 
-        steps += 1
-        row -= 1
+        neighbor = [row - 1, column]
 
-    # print(steps)
+        # Call findNext(row - 1, column, "north")
 
-    if row == x and y == column:
+    return neighbor
 
-        return steps
+x = tuple[0]
+y = tuple[1]
 
-    else:
+type = input[x][y]
+neighbor = findFirstNeighbor(x, y)
 
-        return findDirection(row, column)
+print(findFirstNeighbor(x, y))
 
-print(findDirection(x, y))
+def findNext(row, column, direction):
+
+    # if the type of input[row, column] == "S" then return 1
+
+    # return 1 + findNext(row, column - 1, "west"
+
+    return 
