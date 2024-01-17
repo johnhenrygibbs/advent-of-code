@@ -110,7 +110,7 @@ def findNext(x, y, moved, pipe):
 
                 forward = choice
 
-        # Referencing the directions table, we can determine the next pipe's coordinates.
+        # Referencing the directions dictionary, we can determine the next pipe's coordinates.
 
         delta = directions[forward]
         x = x + delta[0]
