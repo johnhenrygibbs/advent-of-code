@@ -1,4 +1,5 @@
 import itertools
+import math
 
 with open('/Users/johngibbs/Desktop/John/Repositories/advent-of-code/2023/Day 6/input.txt') as file:
     input = file.read().splitlines()
@@ -62,9 +63,12 @@ print(boatRace(input))
 
 # Solution for Part Two
 
-def oneLongRace(input):
+# Since the brute force solution is suboptimal for larger numbers, we can also solve using a quadratic formula.
 
-    totalWays = 0
+# Lots of solutions on Reddit referenced using Wolfram to determine the exact formula to solve for x.
+
+def concatenateTimeAndDistance(input):
+
     array = []
 
     for line in input:
@@ -73,27 +77,16 @@ def oneLongRace(input):
         numbers = numbers[1:]
         oneNumber = "".join(numbers)
         array.append(oneNumber)
-        print(array)
 
-    elapsed = int(array[0])
-    record = int(array[1])
+    return array
 
-    print(elapsed, record)
+oneRace = concatenateTimeAndDistance(input)
 
-    milliseconds = 0
+t = int(oneRace[0])
+d = int(oneRace[1])
 
-    while milliseconds <= elapsed:
+x = (t - math.sqrt((t ** 2 - 4 * d))) / 2
+x = int(x + 1)
+answer = t + 1 - 2 * x
 
-        mpm = milliseconds
-        totalDistance = (elapsed - milliseconds) * mpm
-
-        if totalDistance > record:
-
-            totalWays += 1
-            print(totalWays)
-
-        milliseconds += 1
-
-    return totalWays
-
-# print(oneLongRace(input))
+print(answer)
